@@ -1,109 +1,172 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project-Personal Website</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
-    <h1>My Projects</h1>
-    <nav>
-      <a href="index.html">Home</a> | <a href="about.html">About</a>|
-      <a href="project.html">Project</a> |
-      <a href="contact.html">Contact</a>
-    </nav>
-    <hr />
-    <h2>Daftar Project</h2>
-    <p>
-      Berikut adalah beberapa project sederhana yang pernah atau saya kerjakan.
-    </p>
-    <h3>Project 1: Buku "Pendidikan dan Teknologi"</h3>
-    <img
-      src="assets/images/buku artikel.png"
-      style="border-radius: 15px"
-      alt="Ilustrasi Project"
-      width="500"
-    />
-    <p>
-      Buku yang berisi kumpulan artikel setiap kelompok Kelas 1A pada mata
-      kuliah Pendidikan Bahasa Indonesia untuk memenuhi tugas UAS
-    </p>
-    <h3>
-      Project 2: Karya Tulis Ilmiah “Prediksi Risiko Dropout Mahasiswa Berbasis
-      Explainable AI Untuk Early Warning System”
-    </h3>
-    <img
-      src="assets/images/lomba artikel.png"
-      style="border-radius: 15px"
-      alt="Ilustrasi Project"
-      width="500"
-    />
-    <p>
-      Menyusun Karya Tulis Ilmiah TIK GEMASTIK mengenai prediksi risiko dropout
-      mahasiswa berbasis Explainable AI untuk rancangan Early Warning System.
-      Penelitian membandingkan CatBoost, Random Forest, dan XGBoost,
-      mengevaluasi SMOTENC dan SMOTENC–ENN untuk penanganan ketidakseimbangan
-      kelas, serta menggunakan SHAP untuk menginterpretasikan faktor yang
-      berkontribusi terhadap prediksi risiko dropout.
-    </p>
-    <h3>Project 3: Game "Digital Wayang Kreswara: Echoes of Lost Souls"</h3>
-    <img
-      src="assets/images/digital wayang.jpg"
-      style="border-radius: 15px"
-      alt="Ilustrasi Project"
-      width="500"
-    />
-    <p>
-      Game yang dibuat untuk memenuhi project UAS mata kuliah Analisis
-      Perancangan dan Sistem Informasi
-    </p>
-    <h2>Teknologi yang digunakan</h2>
-    <ul>
-      <li>HTML</li>
-      <li>Python</li>
-      <li>Figma</li>
-      <li>GitHub</li>
-      <li>Visual Studio Code</li>
-      <li>Artificiall Inteligence</li>
-      <li>Google Colab</li>
-    </ul>
-    <h2>Ringkasan Project</h2>
-    <table border="1">
-      <thead>
-        <tr>
-          <th colspan="4">Ringkasan Portofolio Project</th>
-        </tr>
-        <tr>
-          <th rowspan="2">No.</th>
-          <th rowspan="2">Project</th>
-          <th colspan="2">Detail Project</th>
-        </tr>
-        <tr>
-          <th>Teknologi</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Buku "Pendidikan dan Teknologi"</td>
-          <td>Word, Google Schoolar, AI</td>
-          <td rowspan="3">Selesai</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Karya Tulis Ilmiah  Lomba</td>
-          <td>Word, Google Schoolar, Google Colab</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Game Digital Wayang</td>
-          <td>Python, VsCode, RenPy, GitHub</td>
-        </tr>
-      </tbody>
-    </table>
-    <hr />
-    <p>Tertarik berdiskusi?<a href="contact.html"> Hubungi saya </a></p>
-    <p>&copy 2026 Tiara Dwi Ananda. Dibuat menggunakan HTML</p>
+    <!-- ===== NAVBAR ===== -->
+    <header class="navbar">
+      <div class="navbar-inner">
+        <a href="index.html" class="brand">Personal Website</a>
+        <nav class="nav-menu">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="project.html" class="nav-link nav-link-active">Project</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- ===== JUDUL HALAMAN ===== -->
+      <section class="page-head">
+        <div class="page-head-inner">
+          <h1 class="page-title">My Projects</h1>
+          <p class="page-desc">
+            Berikut adalah beberapa project sederhana yang pernah atau saya
+            kerjakan.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===== DAFTAR PROJECT ===== -->
+      <section id="daftar-project" class="section">
+        <h2 class="judul-section">Daftar Project</h2>
+
+        <div class="project-list">
+          <!-- Project 1 -->
+          <article class="project-card">
+            <img
+              src="assets/images/buku artikel.png"
+              alt="Ilustrasi Project"
+              class="project-img"
+            />
+            <div class="project-body">
+              <h3 class="project-title">
+                Project 1: Buku "Pendidikan dan Teknologi"
+              </h3>
+              <p>
+                Buku yang berisi kumpulan artikel setiap kelompok Kelas 1A pada
+                mata kuliah Pendidikan Bahasa Indonesia untuk memenuhi tugas UAS
+              </p>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card">
+            <img
+              src="assets/images/lomba artikel.png"
+              alt="Ilustrasi Project"
+              class="project-img"
+            />
+            <div class="project-body">
+              <h3 class="project-title">
+                Project 2: Karya Tulis Ilmiah "Prediksi Risiko Dropout Mahasiswa
+                Berbasis Explainable AI Untuk Early Warning System"
+              </h3>
+              <p>
+                Menyusun Karya Tulis Ilmiah TIK GEMASTIK mengenai prediksi
+                risiko dropout mahasiswa berbasis Explainable AI untuk rancangan
+                Early Warning System. Penelitian membandingkan CatBoost, Random
+                Forest, dan XGBoost, mengevaluasi SMOTENC dan SMOTENC–ENN untuk
+                penanganan ketidakseimbangan kelas, serta menggunakan SHAP untuk
+                menginterpretasikan faktor yang berkontribusi terhadap prediksi
+                risiko dropout.
+              </p>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card">
+            <img
+              src="assets/images/digital wayang.jpg"
+              alt="Ilustrasi Project"
+              class="project-img"
+            />
+            <div class="project-body">
+              <h3 class="project-title">
+                Project 3: Game "Digital Wayang Kreswara: Echoes of Lost Souls"
+              </h3>
+              <p>
+                Game yang dibuat untuk memenuhi project UAS mata kuliah Analisis
+                Perancangan dan Sistem Informasi
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===== TEKNOLOGI ===== -->
+      <section id="teknologi" class="section">
+        <h2 class="judul-section">Teknologi yang digunakan</h2>
+        <ul class="skill-list">
+          <li class="skill-item">HTML</li>
+          <li class="skill-item">Python</li>
+          <li class="skill-item">Figma</li>
+          <li class="skill-item">GitHub</li>
+          <li class="skill-item">Visual Studio Code</li>
+          <li class="skill-item">Artificiall Inteligence</li>
+          <li class="skill-item">Google Colab</li>
+        </ul>
+      </section>
+
+      <!-- ===== RINGKASAN PROJECT ===== -->
+      <section id="ringkasan" class="section">
+        <h2 class="judul-section">Ringkasan Project</h2>
+        <div class="table-wrap">
+          <table class="tabel">
+            <thead>
+              <tr>
+                <th colspan="4">Ringkasan Portofolio Project</th>
+              </tr>
+              <tr>
+                <th rowspan="2">No.</th>
+                <th rowspan="2">Project</th>
+                <th colspan="2">Detail Project</th>
+              </tr>
+              <tr>
+                <th>Teknologi</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Buku "Pendidikan dan Teknologi"</td>
+                <td>Word, Google Schoolar, AI</td>
+                <td rowspan="3">Selesai</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Karya Tulis Ilmiah Lomba</td>
+                <td>Word, Google Schoolar, Google Colab</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Game Digital Wayang</td>
+                <td>Python, VsCode, RenPy, GitHub</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ===== CTA ===== -->
+      <section id="cta" class="section">
+        <div class="cta-box">
+          <p class="cta-teks">Tertarik berdiskusi?</p>
+          <a href="contact.html" class="btn btn-utama">Hubungi saya</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <p>&copy; 2026 Tiara Dwi Ananda. Dibuat menggunakan HTML dan CSS</p>
+    </footer>
   </body>
 </html>

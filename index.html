@@ -1,45 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home-Personal Website</title>
+    <!-- External CSS: seluruh styling halaman ini ada di file style.css -->
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <h1>Personal Website</h1>
-    <p>Selamat datang di website pribadi saya.</p>
-    <nav>
-      <a href="index.html">Home</a> | 
-      <a href="about.html">About</a> |
-      <a href="project.html">Project</a> |
-      <a href="contact.html">Contact</a>
-    </nav>
-    <hr />
-    <h2>Halo, Saya Tiara Dwi Ananda</h2>
-    <img src="assets/images/profil.jpg" style="border-radius: 15px" alt="Foto Profil Tiara Dwi Ananda" width="200"/>
-    <p>
-      Saya adalah mahasiswa yang sedang belajar pengembangan web. <br />
-      Website ini dibuat sebagai latihan menggunakan HTML dasar tanpa CSS.
-    </p>
-      <h2>Tujuan Belajar</h2>
-      <p>Saya sedang belajar HTML dan Git untuk mengembangkan kemampuan dalam Pemrograman Internet.</p>
-    <p>
-      Di website ini Anda dapat mengenal saya, melihat beberapa project, serta
-      menghubungi saya melalui halaman contact.
-    </p>
-    <h3 Strong>Yang Sedang Saya Pelajari</h3>
-    <ul>
-      <li>HTML</li>
-      <li>Algoritma Pemrograman</li>
-      <li>Basis Data</li>
-      <li>Git dan Hub</li>
-    </ul>
-    <p>
-      Silakan kunjungi halaman <a href="about.html">About</a> untuk mengetahui
-      profil saya lebih lengkap.
-    </p>
-    <hr />
-    <p>&copy 2026 Tiara Dwi Ananda. Dibuat menggunakan HTML</p>
+    <!-- ===== NAVBAR ===== -->
+    <header class="navbar">
+      <div class="navbar-inner">
+        <a href="index.html" class="brand">Personal Website</a>
+        <nav class="nav-menu">
+          <a href="index.html" class="nav-link nav-link-active">Home</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="project.html" class="nav-link">Project</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- ===== HERO ===== -->
+      <section id="hero">
+        <div class="hero-inner">
+          <div class="hero-text">
+            <p class="hero-welcome">Selamat datang di website pribadi saya.</p>
+            <h1 class="hero-title">Halo, Saya Tiara Dwi Ananda</h1>
+            <p class="hero-desc">
+              Saya adalah mahasiswa yang sedang belajar pengembangan web.
+              Website ini dibuat sebagai latihan menggunakan HTML dan CSS.
+            </p>
+            <div class="hero-actions">
+              <a href="about.html" class="btn btn-utama">Kenali saya</a>
+              <a href="project.html" class="btn btn-garis">Lihat project</a>
+            </div>
+          </div>
+
+          <div class="hero-foto">
+            <img
+              src="assets/images/profil1.jpg"
+              alt="Foto Profil Tiara Dwi Ananda"
+              class="profile-photo"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TUJUAN BELAJAR ===== -->
+      <section id="tujuan">
+        <h2 class="judul-section">Tujuan Belajar</h2>
+        <div class="card">
+          <p>
+            Saya sedang belajar HTML dan Git untuk mengembangkan kemampuan dalam
+            Pemrograman Internet.
+          </p>
+          <p>
+            Di website ini Anda dapat mengenal saya, melihat beberapa project,
+            serta menghubungi saya melalui halaman contact.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===== SKILL ===== -->
+      <section id="skill">
+        <h2 class="judul-section">Yang Sedang Saya Pelajari</h2>
+        <ul class="skill-list">
+          <li class="skill-item">HTML</li>
+          <li class="skill-item">Algoritma Pemrograman</li>
+          <li class="skill-item">Basis Data</li>
+          <li class="skill-item">Git dan Hub</li>
+        </ul>
+      </section>
+
+      <!-- ===== CTA ===== -->
+      <section id="cta">
+        <div class="cta-box">
+          <p class="cta-teks">
+            Silakan kunjungi halaman About untuk mengetahui profil saya lebih
+            lengkap.
+          </p>
+          <a href="about.html" class="btn btn-utama">Buka halaman About</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <p>&copy; 2026 Tiara Dwi Ananda. Dibuat menggunakan HTML dan CSS</p>
+    </footer>
   </body>
 </html>

@@ -1,0 +1,1023 @@
+:root {
+    --ink: #1b2030;
+    /* warna teks utama (judul)   */
+    --teks: #4d5567;
+    /* warna teks paragraf        */
+    --putih: #ffffff;
+    --wash: #f3f1f7;
+    /* warna latar halaman        */
+    --garis: #e3dfeb;
+    /* warna border tipis         */
+    --aksen: #5b3f7d;
+    /* warna aksen (ungu plum)    */
+    --aksen-gelap: #452e60;
+    /* aksen saat di-hover        */
+
+    --font-judul: Georgia, "Times New Roman", serif;
+    --font-teks: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ---------------------------------------------------------
+   POIN 1a. ELEMENT SELECTOR + GROUPING SELECTOR
+   --------------------------------------------------------- */
+
+/* Grouping selector: tiga selector sekaligus dipisah koma.
+   box-sizing membuat padding & border ikut dihitung ke dalam
+   width, sehingga layout tidak mudah melebar / horizontal scroll. */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Element selector: body */
+body {
+    margin: 0;
+    background-color: var(--wash);
+    font-family: var(--font-teks);
+    /* POIN 2: font-family paragraf */
+    font-size: 16px;
+    /* POIN 2: font-size dasar      */
+    color: var(--teks);
+    /* POIN 2: color paragraf       */
+    line-height: 1.7;
+}
+
+/* Grouping selector untuk semua judul h1, h2, h3 */
+h1,
+h2,
+h3 {
+    font-family: var(--font-judul);
+    /* POIN 2: font judul beda dari paragraf */
+    color: var(--ink);
+    /* POIN 2: color judul */
+    line-height: 1.25;
+    margin: 0 0 12px 0;
+}
+
+/* Element selector: paragraf */
+p {
+    margin: 0 0 14px 0;
+    font-size: 16px;
+}
+
+/* Element selector: gambar.
+   max-width 100% = gambar tidak akan keluar dari container
+   walaupun layar mengecil. */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Element selector: daftar (menghapus bullet bawaan) */
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Element selector: link */
+a {
+    text-decoration: none;
+    color: var(--aksen);
+}
+
+/* Class pembantu untuk mengatur lebar isi halaman */
+.navbar-inner,
+.hero-inner,
+.page-head-inner,
+.section,
+#tujuan,
+#skill,
+#cta {
+    max-width: 1040px;
+    margin: 0 auto;
+    /* auto kiri-kanan = konten berada di tengah */
+    padding: 0 24px;
+}
+
+/* ---------------------------------------------------------
+   1. NAVBAR
+   POIN 5: Flexbox  |  POIN 6: :hover + transition
+   --------------------------------------------------------- */
+
+/* Class selector: .navbar */
+.navbar {
+    background-color: var(--putih);
+    border-bottom: 1px solid var(--garis);
+    position: sticky;
+    /* navbar menempel di atas saat di-scroll */
+    top: 0;
+    z-index: 10;
+}
+
+/* POIN 5: FLEXBOX
+   display:flex membuat brand dan menu berjajar horizontal.
+   space-between mendorong brand ke kiri dan menu ke kanan. */
+.navbar-inner {
+    display: flex;
+    align-items: center;
+    /* sejajar rata tengah secara vertikal */
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* boleh turun ke baris baru di layar kecil */
+    gap: 12px;
+    height: 68px;
+}
+
+.brand {
+    font-family: var(--font-judul);
+    font-size: 20px;
+    color: var(--ink);
+    letter-spacing: 0.2px;
+}
+
+/* POIN 5: FLEXBOX kedua - menu navigasi */
+.nav-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+/* POIN 3 (mini box model) + POIN 6 (hover & transition) */
+.nav-link {
+    padding: 8px 14px;
+    /* padding: jarak dalam tombol menu */
+    border-radius: 8px;
+    color: var(--teks);
+    font-size: 15px;
+    /* transition = perubahan warna berlangsung halus 0,3 detik */
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* POIN 6: efek :hover */
+.nav-link:hover {
+    color: var(--aksen);
+    background-color: var(--wash);
+}
+
+/* Menandai halaman yang sedang dibuka */
+.nav-link-active {
+    color: var(--aksen);
+    font-weight: 600;
+}
+
+/* ---------------------------------------------------------
+   2. HERO SECTION
+   POIN 1b: ID SELECTOR (#hero)  |  POIN 4: width & height
+   POIN 5: Flexbox                |  TANTANGAN: @keyframes
+   --------------------------------------------------------- */
+
+/* ID selector: hanya untuk satu elemen unik di halaman */
+#hero {
+    background-color: var(--putih);
+    border-bottom: 1px solid var(--garis);
+    padding: 72px 0 80px 0;
+}
+
+/* POIN 5: FLEXBOX - teks di kiri, foto di kanan */
+.hero-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 56px;
+    flex-wrap: wrap;
+    /* di layar kecil otomatis jadi bertumpuk ke bawah */
+}
+
+/* flex: 1 1 320px artinya:
+   boleh melebar, boleh menyusut, lebar idealnya 320px */
+.hero-text {
+    flex: 1 1 320px;
+}
+
+.hero-welcome {
+    color: var(--aksen);
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+/* POIN 2: color, font-family (diwarisi dari grup h1,h2,h3), font-size */
+.hero-title {
+    font-size: 46px;
+    font-weight: 400;
+    margin-bottom: 18px;
+}
+
+.hero-desc {
+    font-size: 17px;
+    max-width: 46ch;
+    /* membatasi panjang baris supaya enak dibaca */
+    margin-bottom: 26px;
+}
+
+/* POIN 5: FLEXBOX - dua tombol berjajar rapi */
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.hero-foto {
+    flex: 0 0 auto;
+    margin-right: 16px;
+    /* memberi ruang untuk bayangan foto */
+}
+
+/* POIN 4: WIDTH & HEIGHT
+   Foto dipaksa berukuran 280 x 280 px.
+   object-fit: cover membuat foto terpotong proporsional,
+   jadi tidak gepeng walaupun dipaksa berbentuk persegi. */
+.profile-photo {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 6px solid var(--putih);
+    /* POIN 3: border */
+    box-shadow: 16px 16px 0 var(--ink);
+    /* blok warna di belakang foto */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    /* POIN 6 */
+}
+
+/* POIN 6: :hover pada foto - foto bergeser sedikit, bayangan mengecil */
+.profile-photo:hover {
+    transform: translate(6px, 6px);
+    box-shadow: 8px 8px 0 var(--ink);
+}
+
+/* ---------------------------------------------------------
+   3. TOMBOL / CTA
+   POIN 6: :hover + transition + transform
+   --------------------------------------------------------- */
+.btn {
+    display: inline-block;
+    padding: 13px 26px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    border: 2px solid var(--aksen);
+    transition: background-color 0.3s ease, color 0.3s ease,
+        transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-utama {
+    background-color: var(--aksen);
+    color: var(--putih);
+}
+
+/* POIN 6: saat di-hover tombol naik sedikit (translateY) */
+.btn-utama:hover {
+    background-color: var(--aksen-gelap);
+    border-color: var(--aksen-gelap);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(91, 63, 125, 0.28);
+}
+
+.btn-garis {
+    background-color: transparent;
+    color: var(--aksen);
+}
+
+.btn-garis:hover {
+    background-color: var(--aksen);
+    color: var(--putih);
+    transform: translateY(-3px);
+}
+
+/* ---------------------------------------------------------
+   4. SECTION TUJUAN BELAJAR
+   POIN 3: BOX MODEL LENGKAP (margin + border + padding)
+   --------------------------------------------------------- */
+#tujuan {
+    padding-top: 64px;
+}
+
+.judul-section {
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--aksen);
+    display: inline-block;
+    /* garis bawah hanya selebar teksnya */
+}
+
+/* POIN 3: satu elemen memakai margin, border, dan padding sekaligus */
+.card {
+    margin: 8px 0 0 0;
+    /* margin  = jarak DI LUAR kotak   */
+    border: 1px solid var(--garis);
+    /* border  = garis tepi kotak      */
+    border-left: 5px solid var(--aksen);
+    /* aksen tebal di sisi kiri        */
+    padding: 28px 30px;
+    /* padding = jarak DI DALAM kotak  */
+    background-color: var(--putih);
+    border-radius: 14px;
+    transition: box-shadow 0.3s ease;
+    /* POIN 6 */
+}
+
+/* POIN 6: bayangan muncul halus saat kursor di atas card */
+.card:hover {
+    box-shadow: 0 10px 26px rgba(27, 32, 48, 0.08);
+}
+
+.card p:last-child {
+    margin-bottom: 0;
+}
+
+/* ---------------------------------------------------------
+   5. SECTION SKILL
+   POIN 1b: ID selector (#skill)  |  POIN 5: Flexbox
+   POIN 6: :hover + transition
+   --------------------------------------------------------- */
+#skill {
+    padding-top: 60px;
+}
+
+/* POIN 5: FLEXBOX - daftar skill berjajar ke samping dan rapi.
+   flex-wrap: wrap membuat item turun ke bawah kalau layar sempit. */
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+/* POIN 3: skill-item juga memakai margin + border + padding */
+.skill-item {
+    margin: 0;
+    border: 1px solid var(--garis);
+    padding: 18px 24px;
+    background-color: var(--putih);
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    transition: transform 0.3s ease, border-color 0.3s ease,
+        color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* POIN 6: :hover pada kartu skill */
+.skill-item:hover {
+    transform: translateY(-6px);
+    border-color: var(--aksen);
+    color: var(--aksen);
+    box-shadow: 0 10px 20px rgba(27, 32, 48, 0.08);
+}
+
+/* ---------------------------------------------------------
+   6. SECTION CTA (ajakan ke halaman About)
+   --------------------------------------------------------- */
+#cta {
+    padding-top: 60px;
+    padding-bottom: 72px;
+}
+
+/* POIN 5: FLEXBOX - teks dan tombol sejajar, tombol di kanan */
+.cta-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 0;
+    border: 1px solid var(--garis);
+    padding: 34px 36px;
+    background-color: var(--putih);
+    border-radius: 16px;
+}
+
+.cta-teks {
+    margin: 0;
+    font-size: 18px;
+    color: var(--ink);
+    font-family: var(--font-judul);
+    max-width: 48ch;
+}
+
+/* ---------------------------------------------------------
+   7. FOOTER
+   --------------------------------------------------------- */
+.footer {
+    background-color: var(--ink);
+    color: #c8cbd6;
+    text-align: center;
+    padding: 26px 24px;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* ---------------------------------------------------------
+   TANTANGAN TAMBAHAN: @keyframes / CSS ANIMATION
+   Animasi fade-in + slide-up saat halaman Home pertama dibuka.
+   --------------------------------------------------------- */
+
+/* from = kondisi awal, to = kondisi akhir */
+@keyframes munculNaik {
+    from {
+        opacity: 0;
+        /* transparan  */
+        transform: translateY(26px);
+        /* posisi 26px lebih bawah */
+    }
+
+    to {
+        opacity: 1;
+        /* terlihat penuh */
+        transform: translateY(0);
+        /* kembali ke posisi asli */
+    }
+}
+
+/* Animasi untuk foto: fade-in + sedikit membesar */
+@keyframes munculZoom {
+    from {
+        opacity: 0;
+        transform: scale(0.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animasi dipasang ke elemen hero.
+   animation-fill-mode: both -> elemen mengikuti kondisi "from"
+   sebelum animasi mulai, jadi tidak berkedip. */
+.hero-welcome,
+.hero-title,
+.hero-desc,
+.hero-actions {
+    animation: munculNaik 0.7s ease-out both;
+}
+
+/* animation-delay dibuat bertahap supaya muncul satu per satu */
+.hero-welcome {
+    animation-delay: 0.05s;
+}
+
+.hero-title {
+    animation-delay: 0.20s;
+}
+
+.hero-desc {
+    animation-delay: 0.35s;
+}
+
+.hero-actions {
+    animation-delay: 0.50s;
+}
+
+.hero-foto {
+    animation: munculZoom 0.9s ease-out 0.30s both;
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE - MEDIA QUERY
+   Tablet (<= 900px) dan Smartphone (<= 600px)
+   --------------------------------------------------------- */
+
+/* TABLET */
+@media (max-width: 900px) {
+    .hero-inner {
+        flex-direction: column-reverse;
+        /* foto pindah ke atas teks */
+        align-items: flex-start;
+        gap: 36px;
+    }
+
+    #hero {
+        padding: 48px 0 52px 0;
+    }
+
+    .hero-title {
+        font-size: 38px;
+    }
+
+    .hero-foto {
+        margin-right: 0;
+    }
+
+    .profile-photo {
+        width: 230px;
+        height: 230px;
+        box-shadow: 12px 12px 0 var(--ink);
+    }
+}
+
+/* SMARTPHONE */
+@media (max-width: 600px) {
+    .navbar-inner {
+        height: auto;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        justify-content: center;
+        /* brand & menu rata tengah */
+    }
+
+    .nav-menu {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .nav-link {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    .hero-title {
+        font-size: 30px;
+    }
+
+    .hero-desc {
+        font-size: 16px;
+    }
+
+    /* Tombol dibuat memenuhi lebar layar supaya mudah ditekan */
+    .hero-actions {
+        width: 100%;
+    }
+
+    .btn {
+        flex: 1 1 100%;
+        text-align: center;
+    }
+
+    .profile-photo {
+        width: 190px;
+        height: 190px;
+        box-shadow: 10px 10px 0 var(--ink);
+    }
+
+    .judul-section {
+        font-size: 25px;
+    }
+
+    .card,
+    .cta-box {
+        padding: 22px 20px;
+    }
+
+    .skill-list {
+        gap: 12px;
+    }
+
+    .skill-item {
+        flex: 1 1 100%;
+        /* satu skill satu baris penuh */
+        text-align: center;
+    }
+
+    .cta-box {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .cta-teks {
+        font-size: 17px;
+    }
+}
+
+/* ---------------------------------------------------------
+   AKSESIBILITAS
+   --------------------------------------------------------- */
+
+/* Menonaktifkan animasi untuk pengguna yang memilih
+   "reduce motion" di pengaturan perangkatnya. */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Tanda fokus jelas saat navigasi memakai tombol Tab */
+a:focus-visible {
+    outline: 3px solid var(--aksen);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+
+/* =========================================================
+   BAGIAN HALAMAN LAIN: About, Project, Contact
+   Semua halaman memakai file style.css yang sama.
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   8. JUDUL HALAMAN (About / Project / Contact)
+   --------------------------------------------------------- */
+.page-head {
+    background-color: var(--putih);
+    border-bottom: 1px solid var(--garis);
+    padding: 56px 0 52px 0;
+}
+
+.page-title {
+    font-size: 42px;
+    font-weight: 400;
+    margin: 0;
+    /* TANTANGAN: animasi @keyframes saat halaman dibuka */
+    animation: munculNaik 0.7s ease-out 0.05s both;
+}
+
+.page-desc {
+    font-size: 17px;
+    max-width: 55ch;
+    margin: 12px 0 0 0;
+    animation: munculNaik 0.7s ease-out 0.2s both;
+}
+
+/* Jarak antar section pada halaman About/Project/Contact */
+.section {
+    padding-top: 56px;
+}
+
+/* Section terakhir diberi jarak bawah sebelum footer */
+main .section:last-of-type {
+    padding-bottom: 72px;
+}
+
+/* ---------------------------------------------------------
+   9. TABEL (Data Diri, Ringkasan Project, Form)
+   POIN 3: margin + border + padding
+   --------------------------------------------------------- */
+
+/* Pembungkus tabel: kalau tabel terlalu lebar di HP,
+   yang bergeser hanya tabelnya, bukan seluruh halaman.
+   Ini mencegah horizontal scrolling pada <body>. */
+.table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    border: 1px solid var(--garis);
+    background-color: var(--putih);
+}
+
+.tabel {
+    width: 100%;
+    /* POIN 4: width */
+    border-collapse: collapse;
+    /* garis antar sel menyatu, tidak dobel */
+    background-color: var(--putih);
+    font-size: 15px;
+}
+
+/* Grouping selector: th dan td diatur bersamaan */
+.tabel th,
+.tabel td {
+    border: 1px solid var(--garis);
+    /* POIN 3: border */
+    padding: 14px 18px;
+    /* POIN 3: padding */
+    text-align: left;
+    vertical-align: middle;
+}
+
+/* Baris kepala tabel diberi warna aksen */
+.tabel thead th {
+    background-color: var(--aksen);
+    color: var(--putih);
+    font-family: var(--font-judul);
+    font-weight: 400;
+    font-size: 16px;
+}
+
+/* Baris genap diberi warna selang-seling supaya mudah dibaca */
+.tabel tbody tr:nth-child(even) {
+    background-color: #faf9fc;
+}
+
+/* POIN 6: :hover + transition pada baris tabel */
+.tabel tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+.tabel tbody tr:hover {
+    background-color: var(--wash);
+}
+
+/* ---------------------------------------------------------
+   10. DUA KOLOM (Hobi & Riwayat Pendidikan di About)
+   POIN 5: Flexbox
+   --------------------------------------------------------- */
+.dua-kolom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 36px;
+}
+
+/* flex: 1 1 300px -> dua kolom sejajar di layar lebar,
+   otomatis menumpuk ke bawah di layar sempit */
+.kolom {
+    flex: 1 1 300px;
+}
+
+/* Daftar hobi bernomor */
+.list-angka {
+    list-style: decimal inside;
+    margin: 0;
+    padding: 0;
+}
+
+.list-angka li {
+    margin: 0 0 10px 0;
+    border: 1px solid var(--garis);
+    padding: 12px 18px;
+    background-color: var(--putih);
+    border-radius: 10px;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.list-angka li:hover {
+    border-color: var(--aksen);
+    transform: translateX(6px);
+}
+
+/* Riwayat pendidikan dibuat seperti garis waktu (timeline) */
+.timeline {
+    margin: 0;
+    padding: 0 0 0 22px;
+    border-left: 3px solid var(--garis);
+    /* garis vertikal timeline */
+}
+
+.timeline-item {
+    position: relative;
+    margin: 0 0 18px 0;
+    padding: 12px 18px;
+    background-color: var(--putih);
+    border: 1px solid var(--garis);
+    border-radius: 10px;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Titik bulat di garis timeline */
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -30px;
+    top: 20px;
+    width: 13px;
+    /* POIN 4: width & height */
+    height: 13px;
+    border-radius: 50%;
+    /* 50% membuat kotak jadi lingkaran */
+    background-color: var(--aksen);
+    border: 3px solid var(--wash);
+}
+
+.timeline-item:hover {
+    border-color: var(--aksen);
+    transform: translateX(6px);
+}
+
+/* ---------------------------------------------------------
+   11. KARTU PROJECT (halaman Project)
+   POIN 5: Flexbox  |  POIN 4: width & height
+   --------------------------------------------------------- */
+.project-list {
+    display: flex;
+    flex-direction: column;
+    /* kartu disusun ke bawah */
+    gap: 26px;
+}
+
+/* POIN 3: margin + border + padding  |  POIN 5: Flexbox */
+.project-card {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 26px;
+    margin: 0;
+    border: 1px solid var(--garis);
+    padding: 20px;
+    background-color: var(--putih);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+/* POIN 6: :hover + transition */
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--aksen);
+    box-shadow: 0 12px 28px rgba(27, 32, 48, 0.1);
+}
+
+/* POIN 4: width & height gambar project */
+.project-img {
+    width: 300px;
+    height: 170px;
+    object-fit: cover;
+    /* gambar terpotong rapi, tidak gepeng */
+    border-radius: 12px;
+    flex: 0 0 auto;
+}
+
+/* flex: 1 1 260px -> teks mengisi sisa ruang di samping gambar */
+.project-body {
+    flex: 1 1 260px;
+}
+
+.project-title {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.project-body p {
+    margin-bottom: 0;
+    font-size: 15px;
+}
+
+/* ---------------------------------------------------------
+   12. FORM KONTAK (halaman Contact)
+   --------------------------------------------------------- */
+.form-tabel th {
+    width: 210px;
+    /* POIN 4: width kolom label */
+    background-color: #faf9fc;
+    font-weight: 600;
+    font-family: var(--font-teks);
+    font-size: 15px;
+    color: var(--ink);
+}
+
+.form-tabel tbody tr:hover {
+    background-color: transparent;
+    /* form tidak perlu efek hover baris */
+}
+
+/* Attribute selector: memilih input berdasarkan atribut type.
+   Radio dan checkbox sengaja TIDAK ikut supaya tidak melebar. */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    /* POIN 4: width */
+    padding: 11px 14px;
+    /* POIN 3: padding */
+    border: 1px solid var(--garis);
+    /* POIN 3: border */
+    margin: 0;
+    /* POIN 3: margin */
+    border-radius: 9px;
+    font-family: var(--font-teks);
+    font-size: 15px;
+    color: var(--ink);
+    background-color: var(--putih);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+textarea {
+    resize: vertical;
+    /* hanya bisa ditarik ke bawah, tidak melebar keluar */
+    min-height: 130px;
+}
+
+/* :focus = saat kolom sedang diketik/diklik */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--aksen);
+    box-shadow: 0 0 0 3px rgba(91, 63, 125, 0.15);
+}
+
+/* POIN 5: Flexbox untuk kelompok radio button / checkbox */
+.pilihan {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+}
+
+.pilihan-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.pilihan-item label {
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.pilihan-item input {
+    accent-color: var(--aksen);
+    /* warna bulatan radio mengikuti tema */
+    width: 17px;
+    /* POIN 4: width & height */
+    height: 17px;
+    cursor: pointer;
+}
+
+/* POIN 5: Flexbox untuk tombol Kirim & Reset */
+.form-aksi {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    padding: 6px 0;
+}
+
+/* Tombol <button> perlu diatur ulang karena punya gaya bawaan browser */
+button.btn {
+    font-family: var(--font-teks);
+    cursor: pointer;
+}
+
+.catatan {
+    margin-top: 16px;
+    font-size: 14px;
+    color: #6b7285;
+}
+
+/* ---------------------------------------------------------
+   13. RESPONSIVE untuk halaman About / Project / Contact
+   --------------------------------------------------------- */
+
+/* TABLET */
+@media (max-width: 900px) {
+    .page-head {
+        padding: 40px 0 38px 0;
+    }
+
+    .page-title {
+        font-size: 34px;
+    }
+
+    .project-img {
+        width: 100%;
+        height: 210px;
+    }
+}
+
+/* SMARTPHONE */
+@media (max-width: 600px) {
+    .page-title {
+        font-size: 28px;
+    }
+
+    .section {
+        padding-top: 42px;
+    }
+
+    .tabel th,
+    .tabel td {
+        padding: 11px 13px;
+        font-size: 14px;
+    }
+
+    .project-card {
+        padding: 14px;
+        gap: 16px;
+    }
+
+    .project-img {
+        height: 170px;
+    }
+
+    .project-title {
+        font-size: 18px;
+    }
+
+    /* Form dibuat menumpuk: label di atas, isian di bawahnya,
+     supaya tidak sempit dan tidak perlu di-scroll ke samping. */
+    .form-tabel,
+    .form-tabel thead,
+    .form-tabel tbody,
+    .form-tabel tr,
+    .form-tabel th,
+    .form-tabel td {
+        display: block;
+        width: 100%;
+    }
+
+    .form-tabel tbody th {
+        border-bottom: none;
+    }
+
+    .form-tabel td {
+        border-top: none;
+    }
+
+    .form-aksi .btn {
+        flex: 1 1 100%;
+    }
+}
